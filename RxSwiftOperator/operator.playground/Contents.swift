@@ -79,6 +79,25 @@ func combineLatestOperator() {
 }
 //combineLatestOperator() //输出1A,2A,2B,2C,2D,3D,4D,5D
 
+func combineLatestOperator1() {
+  let stringObservable = Observable.just("1")
+  let fruitObservable = Observable.from(["a", "b"])
+  let animalObservable = Observable.from(["2", "3", "4"])
+  let source = [stringObservable, fruitObservable, animalObservable]
+  Observable
+    .combineLatest(source) { "\($0[0]) \($0[1]) \($0[2])" }
+    .subscribe(onNext: { print($0) })
+    .disposed(by: disbag)
+}
+//combineLatestOperator1() 
+/*
+ 输出:
+ 1 a 2
+ 1 b 2
+ 1 b 3
+ 1 b 4
+ */
+
 
 ///操作符将多个 Observables 按顺序串联起来，当前一个 Observable 元素发送完毕后，后一个 Observable 才可以开始发出元素
 func concatOperator() {
@@ -430,8 +449,7 @@ func generateOperator() {
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
-generateOperator() //输出:
-
+//generateOperator() //输出: 2, 4
 
 
 ///ignoreElements 操作符将阻止 Observable 发出 next 事件，但是允许他发出 error 或 completed 事件。如果你并不关心 Observable 的任何元素，你只想知道 Observable 在什么时候终止，那就可以使用 ignoreElements 操作符。
@@ -840,6 +858,22 @@ func startWithOperator() {
 //startWithOperator() //输出:🅰️,🅱️ 1,2,3,4,5,6
 
 
+///switchLatest操作符: 取出信号中的信号,订阅最新发出的信号
+func switchLatestOperator() {
+  let obser = BehaviorSubject(value: obser1)
+  
+  obser
+    .switchLatest()
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("hello")
+  obser.onNext(obser2)
+  obser2.onNext("rxswift")
+}
+//switchLatestOperator() //输出: hello rxswift
+
+
 ///通过 take 操作符你可以只发出头 n 个元素。并且忽略掉后面的元素，直接结束序列。
 func takeOperator() {
   Observable<Int>
@@ -974,8 +1008,49 @@ func usingOperator() {
 func windowOperator() {
   Observable<Int>
     .of(1,2,3,4,5,6,7,8)
-    .window(timeSpan: .seconds(4), count: 2, scheduler: MainScheduler.instance)
+    .window(timeSpan: .seconds(2), count: 4, scheduler: MainScheduler.instance)
+    .debug()
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
-windowOperator() //输出
+//windowOperator() //输出
+
+
+///withLatestFrom 操作符将两个 Observables 中最新的元素通过一个函数组合起来，然后将这个组合的结果发出来。当第一个 Observable 发出一个元素时，就立即取出第二个 Observable 中最新的元素，通过一个组合函数将两个最新的元素合并后发送出去。
+func withLatestFromOperator() {
+  obser1
+    .withLatestFrom(obser2, resultSelector: {$0+$1})
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("1")
+  obser1.onNext("2")
+  obser2.onNext("a")
+  obser1.onNext("3")
+  obser2.onNext("b")
+  obser2.onNext("c")
+  obser1.onNext("4")
+}
+//withLatestFromOperator() //输出: 3a,4c
+
+
+/**
+ zip 操作符将多个(最多不超过8个) Observables 的元素通过一个函数组合起来，然后将这个组合的结果发出来。它会严格的按照序列的索引数进行组合。例如，返回的 Observable 的第一个元素，是由每一个源 Observables 的第一个元素组合出来的。它的第二个元素 ，是由每一个源 Observables 的第二个元素组合出来的。它的第三个元素 ，是由每一个源 Observables 的第三个元素组合出来的，以此类推。它的元素数量等于源 Observables 中元素数量最少的那个。
+ */
+func zipOperator() {
+  
+    Observable<String>
+    .zip(obser1, obser2, resultSelector: {$0+$1})
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("1")
+  obser1.onNext("2")
+  obser2.onNext("a")
+  obser1.onNext("3")
+  obser2.onNext("b")
+  obser2.onNext("c")
+  obser1.onNext("4")
+  obser2.onNext("d")
+}
+//zipOperator() //输出:1a,2b,3c,4d
