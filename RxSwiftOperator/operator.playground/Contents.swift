@@ -364,6 +364,21 @@ func flatMapPerator1() {
 //flatMapPerator1() //输出: 1, 👦🏻
 
 
+/// flatMapFirst 与 flatMapLatest 正好相反：flatMapFirst 只会接收最初的 value 事件。该操作符可以防止重复请求：比如点击一个按钮发送一个请求，当该请求完成前，该按钮点击都不应该继续发送请求。便可该使用 flatMapFirst 操作符。
+func flatMapFirstOperator() {
+  let observer = BehaviorSubject(value: obser1)
+  observer
+    .flatMapFirst({$0})
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("a")
+  observer.onNext(obser2)
+  obser2.onNext("1")
+}
+//flatMapFirstOperator() //输出: a
+
+
 ///flatMapLatest 操作符将源 Observable 的每一个元素应用一个转换方法，将他们转换成 Observables。一旦转换出一个新的 Observable，就只发出它的元素，旧的 Observables 的元素将被忽略掉。
 func flatMapLatestOperator() {
   let obser = BehaviorSubject(value: obser1)
@@ -406,6 +421,17 @@ func groupByOperator() {
     .disposed(by: disbag)
 }
 //groupByOperator() //奇数 : 1,3,5,7,9  偶数 : 2,4,6,8,10
+
+
+///创建一个可观察对象序列，只要所提供的条件计算为true，该序列就会生成值。
+func generateOperator() {
+  Observable<Int>
+    .generate(initialState: 2, condition: {$0 < 6}, iterate: {$0 * 2})
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+generateOperator() //输出:
+
 
 
 ///ignoreElements 操作符将阻止 Observable 发出 next 事件，但是允许他发出 error 或 completed 事件。如果你并不关心 Observable 的任何元素，你只想知道 Observable 在什么时候终止，那就可以使用 ignoreElements 操作符。
@@ -624,8 +650,332 @@ func retryOperator() {
 }
 //retryOperator() //输出:🍎 🍐 🍊 error 🍎 🍐 🍊 🐶 🐱 🐭
 
+///创建一个可观察序列，该序列发出一系列顺序整数，然后终止
+func rangeOperator() {
+  Observable<Int>
+    .range(start: 1, count: 6)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//rangeOperator() //输出: 1,2,3,4,5,6
 
+  
 ///sample 操作符将不定期的对源 Observable 进行取样操作。通过第二个 Observable 来控制取样时机。一旦第二个 Observable 发出一个元素，就从源 Observable 中取出最后产生的元素。
 func sampleOperator() {
+  let subject1 = Observable<Int>
+    .interval(.seconds(1), scheduler: MainScheduler.instance)
   
+  let subject2 = Observable<Int>
+    .interval(.seconds(3), scheduler: MainScheduler.instance)
+  
+  subject1
+    .sample(subject2)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
 }
+//sampleOperator() //输出: 2, 5, 8, 11, ...
+
+
+///Sample除了订阅源Observable外，还可以监视另外一个Observable，即notifier。每当收到notifier事件，就会从源序列取一个最新的事件并发送。而如果两次 notifier 事件之间没有源序列的事件，则不发送值。
+func sampleOperator1() {
+  let source = PublishSubject<Int>()
+  let notifier = PublishSubject<String>()
+  
+  source
+    .sample(notifier)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  notifier.onNext("A")
+  source.onNext(1)
+  source.onNext(3)
+  notifier.onNext("B")
+  notifier.onNext("C")
+  source.onNext(4)
+}
+//sampleOperator1() //输出 3
+
+
+///scan操作符将对第一个元素应用一个函数，将结果作为第一个元素发出。然后，将结果作为参数填入到第二个元素的应用函数中，创建第二个元素。以此类推，直到遍历完全部的元素。
+func scanOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5)
+    .scan(0, accumulator: +)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//scanOperator() //输出1,3,6,10,15
+
+func scanIntoOperator() {
+  var source = [Int]()
+//  let block:((_ x:inout [Int], _ y:Int) -> Void) = {x,y in
+//    x.append(y)
+//  }
+  
+//  Observable<Int>
+//    .of(1,2,3,4,5,6)
+//    .scan(into: source, accumulator: block)
+//    .subscribe(onNext:{print($0)})
+//    .disposed(by: disbag)
+//等价于下面的写法
+  
+  Observable<Int>
+    .of(1,2,3)
+    .scan(into: source, accumulator: {$0.append($1)})
+    .subscribe(onNext:{print($0)})
+    .disposed(by: disbag)
+
+}
+//scanIntoOperator() //输出: [1], [1, 2], [1, 2, 3]
+
+
+/**
+ share(replay:scope:) 操作符将使得观察者共享源 Observable，并且缓存最新的 n 个元素，将这些元素直接发送给新的观察者
+ replay: 缓存的个数,默认值为0
+ scope: 默认值为.whileConnected
+ 		1.forever：用一个Subject存储所有的connections的事件Event
+ 		2.whileConnected：每个connection 都有单独的一个Subject存储事件Event
+ */
+func shareReplayOperator() {
+  let obser = Observable<String>.create { observer in
+    print("开始网络请求")
+    observer.onNext("网络请求结果")
+    observer.onCompleted()
+    return Disposables.create()
+  }.share(replay: 1, scope: .forever)
+  
+  obser
+    .subscribe(onNext: {print("第一次订阅: \($0)")})
+    .disposed(by: disbag)
+  
+  obser
+    .subscribe(onNext: {print("第二次订阅: \($0)")})
+    .disposed(by: disbag)
+}
+//shareReplayOperator()
+/*
+ 输出:
+ 开始网络请求
+ 第一次订阅: 网络请求结果
+ 第二次订阅: 网络请求结果
+ */
+
+
+///single 操作符将限制 Observable 只产生一个元素。如果 Observable 只有一个元素，它将镜像这个 Observable 。如果 Observable 没有元素或者元素数量大于一，它将产生一个 error 事件。
+func singleOperator() {
+  Observable<Int>
+    .of(1,2)
+    .single()
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//singleOperator()
+//输出: 1, Unhandled error happened: Sequence contains more than one element.
+
+///只发出一次请求, 常用于网络请求
+func singleOperator1() {
+  let obser = Observable<String>.create { observer in
+    print("开始网路请求")
+    observer.onNext("请求结果")
+    observer.onCompleted()
+    return Disposables.create()
+  }.share(replay: 1, scope: .forever)
+  
+  obser
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//singleOperator1() //输出: 开始请求请求, 请求结果
+
+
+///skip 操作符可以让你跳过 Observable 中头 n 个元素，只关注后面的元素。
+func skipOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5,6)
+    .skip(2)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//skipOperator() //输出: 3,4,5,6
+
+
+///skipUntil 操作符可以让你忽略源 Observable 中头几个元素，直到另一个 Observable 发出一个元素后，它才镜像源 Observable。
+func skipUntilOperator() {
+  obser1
+    .skip(until: obser2)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("1")
+  obser1.onNext("2")
+  obser2.onNext("A")
+  obser1.onNext("3")
+  obser1.onNext("4")
+  obser1.onNext("5")
+  obser1.onNext("6")
+}
+//skipUntilOperator() //输出: 3,4,5,6
+
+
+///skipWhile 操作符可以让你忽略源 Observable 中头几个元素，直到元素的判定为否后，它才镜像源 Observable。
+func skipWhileOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5,6)
+    .skip(while: { $0 < 3 })
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//skipWhileOperator() //输出: 3,4,5,6
+
+
+///startWith 操作符会在 Observable 头部插入一些元素。
+func startWithOperator() {
+  Observable<String>
+    .of("2","3","4","5","6")
+    .startWith("1")
+    .startWith("🅰️", "🅱️")
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//startWithOperator() //输出:🅰️,🅱️ 1,2,3,4,5,6
+
+
+///通过 take 操作符你可以只发出头 n 个元素。并且忽略掉后面的元素，直接结束序列。
+func takeOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5,6)
+    .take(3)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//takeOperator() //输出: 1,2,3
+
+
+///通过 takeLast 操作符你可以只发出尾部 n 个元素。并且忽略掉前面的元素, 注意一个信号发送完成要调用 onCompleted
+func takeLastOperator() {
+  obser1
+    .takeLast(2)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("a")
+  obser1.onNext("b")
+  obser1.onNext("c")
+  obser1.onNext("d")
+  obser1.onNext("e")
+  obser1.onCompleted()
+}
+//takeLastOperator() //输出: d, e
+
+
+///takeUntil 操作符将镜像源 Observable，它同时观测第二个 Observable。一旦第二个 Observable 发出一个元素或者产生一个终止事件，那个镜像的 Observable 将立即终止
+func takeUntilOperator() {
+  obser1
+    .take(until: obser2)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+  
+  obser1.onNext("A")
+  obser1.onNext("B")
+  obser1.onNext("C")
+  obser2.onNext("1")
+  obser1.onNext("D")
+  obser1.onNext("E")
+}
+//takeUntilOperator() //输出: A,B,C
+
+
+/**
+ takeUntil 操作符将镜像源 Observable，它同时观测第二个 Observable
+ behavior: 判断条件
+ .inclusive: 包含与谓词匹配的最后一个元素
+ .exclusive: 不包含与谓词匹配的最后一个元素
+ */
+func takeUntilOperator1() {
+  Observable<Int>
+    .of(1,2,3,4,5,6,4)
+    .take(until: {$0 > 4}, behavior: .exclusive)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//takeUntilOperator1() //输出: 1,2,3,4
+
+
+///takeWhile 操作符将镜像源 Observable 直到某个元素的判定为 false。此时，这个镜像的 Observable 将立即终止。
+func takeWhileOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5,6)
+    .take(while: {$0 < 4})
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//takeWhileOperator() //输出: 1,2,3
+
+
+/**
+ takeWhile 操作符将镜像源 Observable，它同时观测第二个 Observable
+ behavior: 判断条件
+ .inclusive: 包含与谓词匹配的最后一个元素
+ .exclusive: 不包含与谓词匹配的最后一个元素
+ */
+func takeWhileOperator1() {
+  Observable<Int>
+    .of(1,2,3,4,5,6)
+    .take(while: {$0 < 4},behavior: .exclusive)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//takeWhileOperator1() //输出: 1,2,3
+
+
+///如果 Observable 在一段时间内没有产生元素，timeout 操作符将使它发出一个 error 事件。
+func timeOutOperator()  {
+  Observable<Int>
+    .of(1,3,6,12,18)
+    .flatMap({Observable<Int>.just($0).delay(.seconds($0), scheduler: MainScheduler.instance)})
+    .timeout(.seconds(3), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//timeOutOperator() //输出: 1, 3, Unhandled error happened: Sequence timeout.
+
+
+///timer 操作符将创建一个 Observable，它在经过设定的一段时间后，产生唯一的一个元素。这里存在其他版本的 timer 操作符
+func timerOperator() {
+  Observable<Int>
+    .timer(.seconds(3), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+
+//timerOperator() //输出: 3s后输出 0
+
+/**
+ dueTime: 初始延时
+ period: 时间间隔
+ scheduler: 所在线程
+ */
+func timerOperator1() {
+  Observable<Int>
+    .timer(.seconds(3), period: .seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+//timerOperator1() //输出: 0,1,2,3,4,...
+
+
+///通过使用 using 操作符创建 Observable 时，同时创建一个可被清除的资源，一旦 Observable 终止了，那么这个资源就会被清除掉了。
+func usingOperator() {
+  print("暂时不知道如何使用,没有深入理解其使用场景,后续用到时再深入理解")
+}
+
+
+///window 操作符和 buffer 十分相似，buffer 周期性的将缓存的元素集合发送出来，而 window 周期性的将元素集合以 Observable 的形态发送出来。
+func windowOperator() {
+  Observable<Int>
+    .of(1,2,3,4,5,6,7,8)
+    .window(timeSpan: .seconds(4), count: 2, scheduler: MainScheduler.instance)
+    .subscribe(onNext: {print($0)})
+    .disposed(by: disbag)
+}
+windowOperator() //输出
