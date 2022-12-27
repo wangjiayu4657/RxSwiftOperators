@@ -89,7 +89,7 @@ func combineLatestOperator1() {
     .subscribe(onNext: { print($0) })
     .disposed(by: disbag)
 }
-//combineLatestOperator1() 
+//combineLatestOperator1()
 /*
  输出:
  1 a 2
@@ -383,7 +383,7 @@ func flatMapPerator1() {
 //flatMapPerator1() //输出: 1, 👦🏻
 
 
-/// flatMapFirst 与 flatMapLatest 正好相反：flatMapFirst 只会接收最初的 value 事件。该操作符可以防止重复请求：比如点击一个按钮发送一个请求，当该请求完成前，该按钮点击都不应该继续发送请求。便可该使用 flatMapFirst 操作符。
+/// flatMapFirst 与 flatMapLatest 正好相反：flatMapFirst 只会接收最初的 value 事件。该操作符可以防止重复请求：比如点击一个按钮发送一个请求，当该请求完成前，该按钮点击都不应该继续发送请求。便可使用 flatMapFirst 操作符。
 func flatMapFirstOperator() {
   let observer = BehaviorSubject(value: obser1)
   observer
@@ -1014,6 +1014,11 @@ func windowOperator() {
     .disposed(by: disbag)
 }
 //windowOperator() //输出
+/*
+ RxSwift.AddRef<Swift.Int>
+ RxSwift.AddRef<Swift.Int>
+ RxSwift.AddRef<Swift.Int>
+ */
 
 
 ///withLatestFrom 操作符将两个 Observables 中最新的元素通过一个函数组合起来，然后将这个组合的结果发出来。当第一个 Observable 发出一个元素时，就立即取出第二个 Observable 中最新的元素，通过一个组合函数将两个最新的元素合并后发送出去。
