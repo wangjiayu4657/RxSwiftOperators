@@ -43,17 +43,19 @@ extension ViewController {
 
 extension ViewController {
   private func bindData() {
-    
     viewModel.musics
       .bind(to: tableView.rx.items(cellIdentifier: "musicCellID")){ _, music, cell in
         cell.textLabel?.text = music.name
       }
       .disposed(by: disbag)
     
-    
     tableView.rx
       .modelSelected(Music.self)
-      .subscribe(onNext: {print("选中的歌曲名称: \($0.name)")})
+      .subscribe(onNext: {[weak self] in
+        print("选中的歌曲名称: \($0.name)")
+        let contrl = DatePickerViewController()
+        self?.navigationController?.pushViewController(contrl, animated: true)
+      })
       .disposed(by: disbag)
   }
 }
@@ -64,7 +66,7 @@ struct MusicViewModel {
   	Music(name: "无条件", singer: "陈奕迅"),
     Music(name: "你曾是少年", singer: "S.H.E"),
     Music(name: "从前的我", singer: "陈洁仪"),
-    Music(name: "在木星", singer: "朴树"),
+    Music(name: "在木星", singer: "朴树")
   ])
 }
 

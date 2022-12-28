@@ -13,6 +13,8 @@
 		75ABB3002949A02700EF4100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB2FE2949A02700EF4100 /* Main.storyboard */; };
 		75ABB3022949A02800EF4100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB3012949A02800EF4100 /* Assets.xcassets */; };
 		75ABB3052949A02800EF4100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */; };
+		75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */; };
+		75FCEA73295C0BA200DA9F6E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCEA72295C0BA200DA9F6E /* Operators.swift */; };
 		DA8B39D1AECA40658A81A003 /* Pods_RxSwiftOperator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB87E88B77173241906DD27 /* Pods_RxSwiftOperator.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		75ABB3042949A02800EF4100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75ABB3062949A02800EF4100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75ABB30C2949A46D00EF4100 /* operator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = operator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		75FCEA72295C0BA200DA9F6E /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		8F13F0BCA54726B49995144C /* Pods-RxSwiftOperator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftOperator.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftOperator/Pods-RxSwiftOperator.debug.xcconfig"; sourceTree = "<group>"; };
 		9CB87E88B77173241906DD27 /* Pods_RxSwiftOperator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftOperator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61D21EC4A43B9D9B637E4C3 /* Pods-RxSwiftOperator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftOperator.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftOperator/Pods-RxSwiftOperator.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,9 +68,11 @@
 		75ABB2F72949A02700EF4100 /* RxSwiftOperator */ = {
 			isa = PBXGroup;
 			children = (
+				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
 				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
 				75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */,
 				75ABB2FC2949A02700EF4100 /* ViewController.swift */,
+				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
 				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
 				75ABB3012949A02800EF4100 /* Assets.xcassets */,
 				75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */,
@@ -208,6 +214,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */,
+				75FCEA73295C0BA200DA9F6E /* Operators.swift in Sources */,
 				75ABB2FD2949A02700EF4100 /* ViewController.swift in Sources */,
 				75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */,
 				75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */,

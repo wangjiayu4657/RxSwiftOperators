@@ -8,5 +8,6 @@ target 'RxSwiftOperator' do
    pod 'RxCocoa'
    pod 'RxRelay'
    pod 'SnapKit'
+   pod 'RxDataSources'
 
 end
