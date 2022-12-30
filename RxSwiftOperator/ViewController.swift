@@ -53,7 +53,7 @@ extension ViewController {
       .modelSelected(Music.self)
       .subscribe(onNext: {[weak self] in
         print("选中的歌曲名称: \($0.name)")
-        let contrl = DatePickerViewController()
+        let contrl = RepositioryViewController()
         self?.navigationController?.pushViewController(contrl, animated: true)
       })
       .disposed(by: disbag)

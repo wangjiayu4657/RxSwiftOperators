@@ -51,7 +51,7 @@ extension DatePickerViewController {
     startBtn.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
       make.size.equalTo(CGSize(width: 180, height: 44))
-      make.top.equalTo(datePicker.snp_bottom).offset(15)
+      make.top.equalTo(datePicker.snp.bottom).offset(15)
     }
   }
 }
@@ -85,7 +85,7 @@ extension DatePickerViewController {
     
     Observable<Int>
       .interval(.seconds(1), scheduler: MainScheduler.instance)
-      .take(until: isStopped.filter({$0}))
+      .takeUntil(isStopped.filter({$0}))
       .subscribe {[unowned self] element in
         let value = self.leftTime.value
         self.leftTime.accept(value - 1)

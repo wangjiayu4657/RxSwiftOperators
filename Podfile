@@ -1,13 +1,32 @@
-platform :ios, '9.0'
+use_frameworks!
+platform :ios, '10.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'RxSwiftOperator' do
-  use_frameworks!
 
-   pod 'RxSwift'
-   pod 'RxCocoa'
-   pod 'RxRelay'
-   pod 'SnapKit'
-   pod 'RxDataSources'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxRelay'
+  pod 'Alamofire'
+
+  pod 'Moya'
+  pod 'Moya/RxSwift'
+
+  pod 'RxGesture'
+  pod 'RxDataSources'
+  pod 'SnapKit'
+  
+#  pod 'HandyJSON'
+  pod 'ObjectMapper'
+  pod 'Moya-ObjectMapper/RxSwift'
+  
+  pod 'SwiftyJSON'
+  pod 'Result'
+  
+  pod 'MJRefresh'
+       
+  pod 'MBProgressHUD'
+  
+  pod 'NSObject+Rx'
 
 end
