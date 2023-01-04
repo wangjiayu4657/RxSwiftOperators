@@ -25,9 +25,16 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     title = "RxSwift 操作符练习"
     view.backgroundColor = .orange
+    
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "nav_bg"), for: .default)
 
     buildSubViews()
     bindData()
+  }
+  
+  @IBAction func jumpClick(_ sender: UIBarButtonItem) {
+    let registerCtrl = RegisterViewController()
+    navigationController?.pushViewController(registerCtrl, animated: true)
   }
 }
 

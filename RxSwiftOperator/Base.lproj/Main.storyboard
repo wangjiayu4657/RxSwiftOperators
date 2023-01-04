@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--首页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RxSwiftOperator" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,22 +18,29 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="awy-f4-OLZ">
-                        <barButtonItem key="rightBarButtonItem" title="跳转" id="20X-LP-xrd"/>
+                    <navigationItem key="navigationItem" title="首页" id="awy-f4-OLZ">
+                        <barButtonItem key="rightBarButtonItem" title="跳转" id="20X-LP-xrd">
+                            <connections>
+                                <action selector="jumpClick:" destination="BYZ-38-t0r" id="jBZ-F1-yL8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063.3587786259541" y="3.5211267605633805"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="OuN-rX-HdC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfi-ct-U42" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfi-ct-U42" customClass="BaseNavigationController" customModule="RxSwiftOperator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FOj-xe-wXl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

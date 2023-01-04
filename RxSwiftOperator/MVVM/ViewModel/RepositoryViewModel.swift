@@ -26,7 +26,7 @@ class RepositoryViewModel {
    
     self.searchResult = search
       .filter{!$0.isEmpty}
-      .flatMapLatest { RepositorySevice.repository(query: $0)}
+      .flatMapLatest { RepositorySevice.repository(query: $0) }
     
     //生成清空结果动作序列
     self.cleanResult = search.filter({$0.isEmpty}).map{_ in Void()}

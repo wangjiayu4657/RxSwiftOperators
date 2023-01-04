@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		752680E7295E8F42007A25F2 /* RepositioryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680E6295E8F42007A25F2 /* RepositioryViewController.swift */; };
 		752680E9295EB06B007A25F2 /* RepositorySevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680E8295EB06B007A25F2 /* RepositorySevice.swift */; };
+		752680EB295EBDC2007A25F2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680EA295EBDC2007A25F2 /* RegisterViewController.swift */; };
+		752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680ED295EC157007A25F2 /* UIColor+Extension.swift */; };
+		752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */; };
+		752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680F1295ECC80007A25F2 /* RegisterService.swift */; };
+		7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548E9A9296526E100335A28 /* UILabel+Extension.swift */; };
+		758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FB2964183D00D5CB12 /* InputView.swift */; };
+		758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */; };
+		758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FF2964273A00D5CB12 /* String+Extension.swift */; };
 		75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2F82949A02700EF4100 /* AppDelegate.swift */; };
 		75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */; };
 		75ABB2FD2949A02700EF4100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FC2949A02700EF4100 /* ViewController.swift */; };
@@ -26,6 +34,14 @@
 /* Begin PBXFileReference section */
 		752680E6295E8F42007A25F2 /* RepositioryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositioryViewController.swift; sourceTree = "<group>"; };
 		752680E8295EB06B007A25F2 /* RepositorySevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySevice.swift; sourceTree = "<group>"; };
+		752680EA295EBDC2007A25F2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		752680ED295EC157007A25F2 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		752680F1295ECC80007A25F2 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		7548E9A9296526E100335A28 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		758FD6FB2964183D00D5CB12 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		758FD6FF2964273A00D5CB12 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		75ABB2F52949A02700EF4100 /* RxSwiftOperator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftOperator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ABB2F82949A02700EF4100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		752680EC295EC14B007A25F2 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				752680ED295EC157007A25F2 /* UIColor+Extension.swift */,
+				758FD6FF2964273A00D5CB12 /* String+Extension.swift */,
+				7548E9A9296526E100335A28 /* UILabel+Extension.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		75ABB2EC2949A02700EF4100 = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +104,14 @@
 		75ABB2F72949A02700EF4100 /* RxSwiftOperator */ = {
 			isa = PBXGroup;
 			children = (
+				752680EC295EC14B007A25F2 /* Tools */,
 				75E7BBC3295D3A5D00212051 /* Servers */,
 				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
 				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
 				75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */,
 				75ABB2FC2949A02700EF4100 /* ViewController.swift */,
 				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
+				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
 				75E7BBBF295D3A0A00212051 /* MVVM */,
 				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
 				75ABB3012949A02800EF4100 /* Assets.xcassets */,
@@ -108,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				752680E6295E8F42007A25F2 /* RepositioryViewController.swift */,
+				752680EA295EBDC2007A25F2 /* RegisterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +147,8 @@
 				75E7BBC6295D3F7F00212051 /* Repositories.swift */,
 				75E7BBC8295D410500212051 /* RepositoryViewModel.swift */,
 				752680E8295EB06B007A25F2 /* RepositorySevice.swift */,
+				752680F1295ECC80007A25F2 /* RegisterService.swift */,
+				758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -125,6 +156,7 @@
 		75E7BBC2295D3A4000212051 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				758FD6FB2964183D00D5CB12 /* InputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,15 +301,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */,
 				75E7BBC9295D410500212051 /* RepositoryViewModel.swift in Sources */,
+				752680EB295EBDC2007A25F2 /* RegisterViewController.swift in Sources */,
+				758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */,
 				75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */,
+				752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */,
 				75FCEA73295C0BA200DA9F6E /* Operators.swift in Sources */,
 				75ABB2FD2949A02700EF4100 /* ViewController.swift in Sources */,
+				7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */,
+				758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */,
 				75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */,
 				752680E7295E8F42007A25F2 /* RepositioryViewController.swift in Sources */,
 				75E7BBC5295D3B5200212051 /* Provider.swift in Sources */,
 				75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */,
 				752680E9295EB06B007A25F2 /* RepositorySevice.swift in Sources */,
+				758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */,
+				752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */,
 				75E7BBC7295D3F7F00212051 /* Repositories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

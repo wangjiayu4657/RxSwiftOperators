@@ -10,6 +10,7 @@ import Moya
 
 private let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<Api>.RequestResultClosure) -> Void in
     if var urlRequest = try? endpoint.urlRequest() {
+      	print("urlRequest.url == \(urlRequest.url)")
         urlRequest.timeoutInterval = 10
         closure(.success(urlRequest))
     } else {
@@ -22,16 +23,21 @@ let Provider = MoyaProvider<Api>(requestClosure: timeoutClosure)
 //请求分类
 public enum Api {
   case repositories(String) //查询资源库
+  case usernameAvailable(String) //用户名是否可用
 }
 
 extension Api : TargetType {
   public var baseURL: URL {
-    return URL(string: "https://api.github.com")!
+    switch self {
+      case .usernameAvailable: return URL(string: "https://github.com")!
+      default: return URL(string: "https://api.github.com")!
+    }
   }
   
   public var path: String {
     switch self {
       case .repositories: return "/search/repositories"
+      case .usernameAvailable: return ""
     }
   }
   
@@ -46,6 +52,8 @@ extension Api : TargetType {
         paramters["q"] = query
         paramters["sort"] = "stars"
         paramters["order"] = "desc"
+      case .usernameAvailable(let username):
+        paramters["username"] = username
     }
     return .requestParameters(parameters: paramters, encoding: URLEncoding.default)
   }
