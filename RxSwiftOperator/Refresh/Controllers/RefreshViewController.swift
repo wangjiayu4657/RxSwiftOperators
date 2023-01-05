@@ -9,24 +9,38 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import RxDataSources
+import MJRefresh
 
-class ViewController: UIViewController {
+
+class RefreshViewController: UIViewController {
   
   private lazy var disbag = DisposeBag()
-  private lazy var viewModel = MusicViewModel()
+  
   private lazy var tableView:UITableView = {
     let tableView = UITableView(frame: .zero, style: .plain)
+    tableView.mj_header = MJRefreshNormalHeader()
+    tableView.mj_footer = MJRefreshAutoNormalFooter()
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "musicCellID")
     return tableView
   }()
   
+  private lazy var dataSource = RxTableViewSectionedReloadDataSource<MusicModel>(
+    configureCell: {(_,tb,indexPath,music) in
+      let cell = tb.dequeueReusableCell(withIdentifier: "musicCellID")
+      cell?.textLabel?.text = music.name
+      return cell ?? UITableViewCell()
+    }
+  )
+  
+  private lazy var viewModel = MusicViewModel(input: (
+    startRefresh: tableView.mj_header!.rx.refreshing.asDriver(),
+    loadMoreRefresh: tableView.mj_footer!.rx.refreshing.asDriver()
+  ), disbag: disbag)
   
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "RxSwift 操作符练习"
-    view.backgroundColor = .orange
-    
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "nav_bg"), for: .default)
 
     buildSubViews()
     bindData()
@@ -39,7 +53,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - 设置UI
-extension ViewController {
+extension RefreshViewController {
   private func buildSubViews() {
     view.addSubview(tableView)
     tableView.snp.makeConstraints { make in
@@ -48,16 +62,26 @@ extension ViewController {
   }
 }
 
-extension ViewController {
+//绑定数据
+extension RefreshViewController {
   private func bindData() {
-    viewModel.musics
-      .bind(to: tableView.rx.items(cellIdentifier: "musicCellID")){ _, music, cell in
-        cell.textLabel?.text = music.name
-      }
+    viewModel
+      .source
+      .bind(to: tableView.rx.items(dataSource: dataSource))
+      .disposed(by: disbag)
+    
+    viewModel
+      .endHeaderRefreshing
+      .drive(tableView.mj_header!.rx.endRefreshing)
+      .disposed(by: disbag)
+    
+    viewModel
+      .endFooterRefreshing
+      .drive(tableView.mj_footer!.rx.endRefreshing)
       .disposed(by: disbag)
     
     tableView.rx
-      .modelSelected(Music.self)
+      .modelSelected(SongModel.self)
       .subscribe(onNext: {[weak self] in
         print("选中的歌曲名称: \($0.name)")
         let contrl = RepositioryViewController()
@@ -68,21 +92,6 @@ extension ViewController {
 }
 
 
-struct MusicViewModel {
-  let musics = Observable.just([
-  	Music(name: "无条件", singer: "陈奕迅"),
-    Music(name: "你曾是少年", singer: "S.H.E"),
-    Music(name: "从前的我", singer: "陈洁仪"),
-    Music(name: "在木星", singer: "朴树")
-  ])
-}
 
-struct Music {
-  var name:String = ""
-  var singer:String = ""
-  
-  init(name: String, singer: String) {
-    self.name = name
-    self.singer = singer
-  }
-}
+
+

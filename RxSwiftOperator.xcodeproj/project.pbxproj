@@ -13,6 +13,10 @@
 		752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680ED295EC157007A25F2 /* UIColor+Extension.swift */; };
 		752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */; };
 		752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680F1295ECC80007A25F2 /* RegisterService.swift */; };
+		753DC1E729666F3300007E88 /* MJRefreshComponent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1E629666F3300007E88 /* MJRefreshComponent+Extension.swift */; };
+		753DC1EF2966736700007E88 /* SongsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1EE2966736700007E88 /* SongsService.swift */; };
+		753DC1F12966753300007E88 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1F02966753300007E88 /* MusicViewModel.swift */; };
+		753DC1F429669ED300007E88 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1F329669ED300007E88 /* MusicModel.swift */; };
 		7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547DB5E2965769800B7578A /* ActivityIndicator.swift */; };
 		7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548E9A9296526E100335A28 /* UILabel+Extension.swift */; };
 		758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FB2964183D00D5CB12 /* InputView.swift */; };
@@ -20,7 +24,7 @@
 		758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FF2964273A00D5CB12 /* String+Extension.swift */; };
 		75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2F82949A02700EF4100 /* AppDelegate.swift */; };
 		75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */; };
-		75ABB2FD2949A02700EF4100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FC2949A02700EF4100 /* ViewController.swift */; };
+		75ABB2FD2949A02700EF4100 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FC2949A02700EF4100 /* RefreshViewController.swift */; };
 		75ABB3002949A02700EF4100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB2FE2949A02700EF4100 /* Main.storyboard */; };
 		75ABB3022949A02800EF4100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB3012949A02800EF4100 /* Assets.xcassets */; };
 		75ABB3052949A02800EF4100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */; };
@@ -39,6 +43,10 @@
 		752680ED295EC157007A25F2 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		752680F1295ECC80007A25F2 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		753DC1E629666F3300007E88 /* MJRefreshComponent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MJRefreshComponent+Extension.swift"; sourceTree = "<group>"; };
+		753DC1EE2966736700007E88 /* SongsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsService.swift; sourceTree = "<group>"; };
+		753DC1F02966753300007E88 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
+		753DC1F329669ED300007E88 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		7547DB5E2965769800B7578A /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7548E9A9296526E100335A28 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		758FD6FB2964183D00D5CB12 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
@@ -47,7 +55,7 @@
 		75ABB2F52949A02700EF4100 /* RxSwiftOperator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftOperator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ABB2F82949A02700EF4100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		75ABB2FC2949A02700EF4100 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75ABB2FC2949A02700EF4100 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		75ABB2FF2949A02700EF4100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75ABB3012949A02800EF4100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75ABB3042949A02800EF4100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,11 +86,72 @@
 		752680EC295EC14B007A25F2 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				75E7BBC3295D3A5D00212051 /* Servers */,
+				753DC1E82966722500007E88 /* Extension */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		753DC1E82966722500007E88 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
 				752680ED295EC157007A25F2 /* UIColor+Extension.swift */,
 				758FD6FF2964273A00D5CB12 /* String+Extension.swift */,
 				7548E9A9296526E100335A28 /* UILabel+Extension.swift */,
+				753DC1E629666F3300007E88 /* MJRefreshComponent+Extension.swift */,
 			);
-			path = Tools;
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		753DC1E92966725700007E88 /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				753DC1F229669EBA00007E88 /* Models */,
+				753DC1ED296672B200007E88 /* Servers */,
+				753DC1EC296672A400007E88 /* Controllers */,
+				753DC1EB2966729900007E88 /* ViewModels */,
+				753DC1EA2966728800007E88 /* Views */,
+			);
+			path = Refresh;
+			sourceTree = "<group>";
+		};
+		753DC1EA2966728800007E88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		753DC1EB2966729900007E88 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				753DC1F02966753300007E88 /* MusicViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		753DC1EC296672A400007E88 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				75ABB2FC2949A02700EF4100 /* RefreshViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		753DC1ED296672B200007E88 /* Servers */ = {
+			isa = PBXGroup;
+			children = (
+				753DC1EE2966736700007E88 /* SongsService.swift */,
+			);
+			path = Servers;
+			sourceTree = "<group>";
+		};
+		753DC1F229669EBA00007E88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				753DC1F329669ED300007E88 /* MusicModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		75ABB2EC2949A02700EF4100 = {
@@ -107,14 +176,13 @@
 			isa = PBXGroup;
 			children = (
 				752680EC295EC14B007A25F2 /* Tools */,
-				75E7BBC3295D3A5D00212051 /* Servers */,
 				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
 				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
 				75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */,
-				75ABB2FC2949A02700EF4100 /* ViewController.swift */,
 				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
 				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
 				75E7BBBF295D3A0A00212051 /* MVVM */,
+				753DC1E92966725700007E88 /* Refresh */,
 				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
 				75ABB3012949A02800EF4100 /* Assets.xcassets */,
 				75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */,
@@ -309,16 +377,20 @@
 				7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */,
 				752680EB295EBDC2007A25F2 /* RegisterViewController.swift in Sources */,
 				758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */,
+				753DC1F12966753300007E88 /* MusicViewModel.swift in Sources */,
 				75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */,
 				752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */,
 				75FCEA73295C0BA200DA9F6E /* Operators.swift in Sources */,
-				75ABB2FD2949A02700EF4100 /* ViewController.swift in Sources */,
+				753DC1F429669ED300007E88 /* MusicModel.swift in Sources */,
+				75ABB2FD2949A02700EF4100 /* RefreshViewController.swift in Sources */,
 				7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */,
+				753DC1E729666F3300007E88 /* MJRefreshComponent+Extension.swift in Sources */,
 				758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */,
 				75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */,
 				752680E7295E8F42007A25F2 /* RepositioryViewController.swift in Sources */,
 				75E7BBC5295D3B5200212051 /* Provider.swift in Sources */,
 				75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */,
+				753DC1EF2966736700007E88 /* SongsService.swift in Sources */,
 				752680E9295EB06B007A25F2 /* RepositorySevice.swift in Sources */,
 				758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */,
 				752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */,
