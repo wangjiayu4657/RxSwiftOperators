@@ -13,6 +13,7 @@
 		752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680ED295EC157007A25F2 /* UIColor+Extension.swift */; };
 		752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */; };
 		752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752680F1295ECC80007A25F2 /* RegisterService.swift */; };
+		7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547DB5E2965769800B7578A /* ActivityIndicator.swift */; };
 		7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548E9A9296526E100335A28 /* UILabel+Extension.swift */; };
 		758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FB2964183D00D5CB12 /* InputView.swift */; };
 		758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */; };
@@ -38,6 +39,7 @@
 		752680ED295EC157007A25F2 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		752680F1295ECC80007A25F2 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		7547DB5E2965769800B7578A /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7548E9A9296526E100335A28 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		758FD6FB2964183D00D5CB12 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				758FD6FB2964183D00D5CB12 /* InputView.swift */,
+				7547DB5E2965769800B7578A /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			files = (
 				752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */,
 				75E7BBC9295D410500212051 /* RepositoryViewModel.swift in Sources */,
+				7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */,
 				752680EB295EBDC2007A25F2 /* RegisterViewController.swift in Sources */,
 				758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */,
 				75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */,

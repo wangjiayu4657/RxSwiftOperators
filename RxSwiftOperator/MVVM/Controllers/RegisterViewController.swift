@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import MBProgressHUD
 
 class RegisterViewController: UIViewController {
   private lazy var userInputView:InputView = InputView(placeholder: "用户名")
@@ -23,6 +24,7 @@ class RegisterViewController: UIViewController {
     return registerBtn
   }()
   
+  private lazy var hud = MBProgressHUD.showAdded(to: self.view, animated: true)
   private lazy var disbag = DisposeBag()
   private lazy var viewModel = RegisterViewModel(
     																username: userInputView.input,
@@ -96,6 +98,12 @@ extension RegisterViewController {
         self?.registerBtn.isEnabled = isEnable
         self?.registerBtn.alpha = isEnable ? 1.0 : 0.3
       })
+      .disposed(by: disbag)
+    
+    viewModel
+      .signingIn
+      .map({!$0})
+      .drive(hud.rx.isHidden)
       .disposed(by: disbag)
     
     viewModel

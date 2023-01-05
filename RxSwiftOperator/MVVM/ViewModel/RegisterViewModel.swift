@@ -55,6 +55,7 @@ class RegisterViewModel {
   let validateRepeatePwd:Driver<ValidationResult>
   
   let btnEnable:Driver<Bool>
+  let signingIn:Driver<Bool>
   let registerResult:Driver<String>
   
   
@@ -80,6 +81,9 @@ class RegisterViewModel {
       .combineLatest(validateUsername, validatePassword, validateRepeatePwd) {$0.isValid && $1.isValid && $2.isValid}
       .distinctUntilChanged()
     
+    let activityIndicator = ActivityIndicator()
+    signingIn = activityIndicator.asDriver()
+    
     //获取最新的用户名和密码
     let usernameAndPassword = Driver.combineLatest(username, password) { (userName:$0, pwd:$1) }
     
@@ -87,8 +91,9 @@ class RegisterViewModel {
       .withLatestFrom(usernameAndPassword)
       .flatMapLatest({
         RegisterService
-        .signup(username: $0.userName, password: $0.pwd)
-        .asDriver(onErrorJustReturn: false)
+         .signup(username: $0.userName, password: $0.pwd)
+         .trackActivity(activityIndicator)
+         .asDriver(onErrorJustReturn: false)
       })
       .map({$0 ? "注册成功" : "注册失败"})
   }
