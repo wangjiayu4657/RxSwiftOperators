@@ -17,11 +17,27 @@ class RefreshViewController: UIViewController {
   
   private lazy var disbag = DisposeBag()
   
+  @IBOutlet weak var jumpBtn: UIBarButtonItem!
+  
   private lazy var tableView:UITableView = {
     let tableView = UITableView(frame: .zero, style: .plain)
-    tableView.mj_header = MJRefreshNormalHeader()
-    tableView.mj_footer = MJRefreshAutoNormalFooter()
+//    tableView.mj_header = MJRefreshNormalHeader()
+//    tableView.mj_footer = MJRefreshAutoNormalFooter()
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "musicCellID")
+    
+    tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[unowned self] in
+      self.subject.onNext(self.headerSubject)
+      self.headerSubject.onNext(true)
+      self.tableView.mj_footer?.endRefreshing()
+    })
+
+    tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {[unowned self] in
+      self.subject.onNext(self.footerSubject)
+      self.footerSubject.onNext(false)
+      self.tableView.mj_header?.endRefreshing()
+    })
+
+    tableView.mj_header?.beginRefreshing()
     return tableView
   }()
   
@@ -33,10 +49,19 @@ class RefreshViewController: UIViewController {
     }
   )
   
-  private lazy var viewModel = MusicViewModel(input: (
-    startRefresh: tableView.mj_header!.rx.refreshing.asDriver(),
-    loadMoreRefresh: tableView.mj_footer!.rx.refreshing.asDriver()
-  ), disbag: disbag)
+  private lazy var headerSubject = PublishSubject<Bool>()
+  private lazy var footerSubject = PublishSubject<Bool>()
+  private lazy var subject = BehaviorSubject(value: headerSubject)
+  
+  private lazy var viewModel = MusicViewModel(service: subject, disbag: disbag)
+  
+//  private lazy var viewModel = MusicViewModel2(
+//    input: (
+//      headerRefresh: tableView.mj_header!.rx.refreshing.asObservable(),
+//      footerRefresh: tableView.mj_footer!.rx.refreshing.asObservable()
+//    ),
+//    disbag: disbag
+//  )
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -72,12 +97,12 @@ extension RefreshViewController {
     
     viewModel
       .endHeaderRefreshing
-      .drive(tableView.mj_header!.rx.endRefreshing)
+      .bind(to: tableView.mj_header!.rx.endRefreshing)
       .disposed(by: disbag)
     
     viewModel
       .endFooterRefreshing
-      .drive(tableView.mj_footer!.rx.endRefreshing)
+      .bind(to: tableView.mj_footer!.rx.endRefreshing)
       .disposed(by: disbag)
     
     tableView.rx

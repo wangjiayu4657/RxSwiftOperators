@@ -44,7 +44,7 @@ func bufferOperator() {
 ///操作符将会拦截一个 error 事件，将它替换成其他的元素或者一组元素，然后传递给观察者。这样可以使得 Observable 正常结束，或者根本都不需要结束
 func catchErrorOperator() {
   obser1
-    .catch({ err in
+    .catchError({ err in
       print("err = \(err)")
       return obser2
     })
@@ -317,7 +317,7 @@ func doOperator() {
 func elementOperator() {
   Observable
     .of("🐱", "🐰", "🐶", "🐸", "🐷", "🐵")
-    .element(at: 3)
+    .elementAt(3)
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
@@ -820,7 +820,7 @@ func skipOperator() {
 ///skipUntil 操作符可以让你忽略源 Observable 中头几个元素，直到另一个 Observable 发出一个元素后，它才镜像源 Observable。
 func skipUntilOperator() {
   obser1
-    .skip(until: obser2)
+    .skipUntil(obser2)
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
   
@@ -839,7 +839,7 @@ func skipUntilOperator() {
 func skipWhileOperator() {
   Observable<Int>
     .of(1,2,3,4,5,6)
-    .skip(while: { $0 < 3 })
+    .skipWhile({$0 < 3})
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
@@ -905,7 +905,7 @@ func takeLastOperator() {
 ///takeUntil 操作符将镜像源 Observable，它同时观测第二个 Observable。一旦第二个 Observable 发出一个元素或者产生一个终止事件，那个镜像的 Observable 将立即终止
 func takeUntilOperator() {
   obser1
-    .take(until: obser2)
+    .takeUntil(obser2)
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
   
@@ -928,7 +928,7 @@ func takeUntilOperator() {
 func takeUntilOperator1() {
   Observable<Int>
     .of(1,2,3,4,5,6,4)
-    .take(until: {$0 > 4}, behavior: .exclusive)
+    .takeUntil(.exclusive, predicate: {$0 > 4})
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
@@ -939,7 +939,7 @@ func takeUntilOperator1() {
 func takeWhileOperator() {
   Observable<Int>
     .of(1,2,3,4,5,6)
-    .take(while: {$0 < 4})
+    .takeWhile({$0 < 4})
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }
@@ -955,7 +955,7 @@ func takeWhileOperator() {
 func takeWhileOperator1() {
   Observable<Int>
     .of(1,2,3,4,5,6)
-    .take(while: {$0 < 4},behavior: .exclusive)
+    .takeUntil(.exclusive, predicate: {$0 < 4})
     .subscribe(onNext: {print($0)})
     .disposed(by: disbag)
 }

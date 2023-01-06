@@ -20,15 +20,11 @@ struct SongModel {
 
 struct MusicModel {
   var header:String = ""
-  var items:[SongModel]
+  var items:[Item]
 }
 
 extension MusicModel : SectionModelType {
   typealias Item = SongModel
-
-  var identity:String {
-    return header
-  }
 
   init(original: MusicModel, items: [SongModel]) {
     self = original
