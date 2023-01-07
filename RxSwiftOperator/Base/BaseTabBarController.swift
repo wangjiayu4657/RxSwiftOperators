@@ -14,7 +14,6 @@ class BaseTabBarController: UITabBarController {
     
     initCtrl()
     initTabBar()
-    view.backgroundColor = .orange
   }
   
   private func initCtrl() {
@@ -43,13 +42,4 @@ class BaseTabBarController: UITabBarController {
     tabBar.tintColor = UIColor(hex: "#108DE9")
     tabBar.backgroundColor = UIColor(hex: "#F7F7F7")
   }
-  
-//  override var tabBar: UITabBar {
-//    let homeItem = UITabBarItem(title: "首页", image: UIImage(named: "home"), selectedImage: UIImage(named: "homeSelected"))
-//    let otherItem = UITabBarItem(title: "其他", image: UIImage(named: "home"), selectedImage: UIImage(named: "homeSelected"))
-//    self.tabBar.items = [homeItem, otherItem]
-//    return self.tabBar
-//  }
-  
-  
 }

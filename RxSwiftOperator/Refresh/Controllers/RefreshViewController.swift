@@ -63,7 +63,7 @@ class RefreshViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "RxSwift 操作符练习"
+    navigationItem.title = "RxSwift 操作符练习"
 
     buildSubViews()
     bindData()

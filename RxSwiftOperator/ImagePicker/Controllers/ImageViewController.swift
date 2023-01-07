@@ -14,6 +14,7 @@ class ImageViewController: UIViewController {
     stackView.axis = .horizontal
     stackView.alignment = .fill
     stackView.distribution = .fillEqually
+    stackView.backgroundColor = UIColor(hex: "#F7F7F7")
     stackView.addArrangedSubview(cameraBtn)
     stackView.addArrangedSubview(pictureBtn)
     stackView.addArrangedSubview(editBtn)
@@ -23,18 +24,21 @@ class ImageViewController: UIViewController {
   private lazy var cameraBtn:UIButton = {
     let cameraBtn = UIButton(type: .roundedRect)
     cameraBtn.setTitle("相机", for: .normal)
+    cameraBtn.backgroundColor = .orange
     return cameraBtn
   }()
   
   private lazy var pictureBtn:UIButton = {
     let pictureBtn = UIButton(type: .roundedRect)
     pictureBtn.setTitle("相册", for: .normal)
+    pictureBtn.backgroundColor = .red
     return pictureBtn
   }()
   
   private lazy var editBtn:UIButton = {
     let editBtn = UIButton(type: .roundedRect)
     editBtn.setTitle("编辑", for: .normal)
+    editBtn.backgroundColor = .green
     return editBtn
   }()
   
@@ -47,7 +51,7 @@ class ImageViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "图片选择器"
+    navigationItem.title = "图片选择器"
     
     buildSubViews()
   }

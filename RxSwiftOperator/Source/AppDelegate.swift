@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
   private func gotoMainController() {
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.backgroundColor = .orange
+    window?.backgroundColor = .white
     window?.rootViewController = BaseTabBarController()
     window?.makeKeyAndVisible()
   }

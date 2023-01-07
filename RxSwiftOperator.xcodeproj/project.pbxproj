@@ -189,6 +189,37 @@
 			path = Proxy;
 			sourceTree = "<group>";
 		};
+		75727C7929694F48002A8E1F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
+				75727C772969462B002A8E1F /* BaseTabBarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		75727C7A29694F87002A8E1F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
+				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
+				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
+				75ABB3012949A02800EF4100 /* Assets.xcassets */,
+				75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */,
+				75ABB3062949A02800EF4100 /* Info.plist */,
+				75ABB30C2949A46D00EF4100 /* operator.playground */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		75727C7B29694FA5002A8E1F /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
 		75ABB2EC2949A02700EF4100 = {
 			isa = PBXGroup;
 			children = (
@@ -210,20 +241,13 @@
 		75ABB2F72949A02700EF4100 /* RxSwiftOperator */ = {
 			isa = PBXGroup;
 			children = (
+				75727C7B29694FA5002A8E1F /* DatePicker */,
+				75727C7A29694F87002A8E1F /* Source */,
+				75727C7929694F48002A8E1F /* Base */,
 				752680EC295EC14B007A25F2 /* Tools */,
-				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
-				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
-				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
-				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
-				75727C772969462B002A8E1F /* BaseTabBarController.swift */,
 				75E7BBBF295D3A0A00212051 /* MVVM */,
 				753DC1E92966725700007E88 /* Refresh */,
 				754039F829691DF0001EDAA0 /* ImagePicker */,
-				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
-				75ABB3012949A02800EF4100 /* Assets.xcassets */,
-				75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */,
-				75ABB3062949A02800EF4100 /* Info.plist */,
-				75ABB30C2949A46D00EF4100 /* operator.playground */,
 			);
 			path = RxSwiftOperator;
 			sourceTree = "<group>";
@@ -584,7 +608,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UKBZQ5P63;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RxSwiftOperator/Info.plist;
+				INFOPLIST_FILE = RxSwiftOperator/Source/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "App需要访问您的相机";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App需要访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -614,7 +638,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UKBZQ5P63;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RxSwiftOperator/Info.plist;
+				INFOPLIST_FILE = RxSwiftOperator/Source/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "App需要访问您的相机";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App需要访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
