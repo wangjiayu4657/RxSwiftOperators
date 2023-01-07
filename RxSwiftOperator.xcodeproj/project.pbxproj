@@ -28,7 +28,6 @@
 		758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */; };
 		758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FF2964273A00D5CB12 /* String+Extension.swift */; };
 		75ABB2F92949A02700EF4100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2F82949A02700EF4100 /* AppDelegate.swift */; };
-		75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */; };
 		75ABB2FD2949A02700EF4100 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABB2FC2949A02700EF4100 /* RefreshViewController.swift */; };
 		75ABB3002949A02700EF4100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB2FE2949A02700EF4100 /* Main.storyboard */; };
 		75ABB3022949A02800EF4100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75ABB3012949A02800EF4100 /* Assets.xcassets */; };
@@ -64,7 +63,6 @@
 		758FD6FF2964273A00D5CB12 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		75ABB2F52949A02700EF4100 /* RxSwiftOperator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftOperator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ABB2F82949A02700EF4100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		75ABB2FC2949A02700EF4100 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		75ABB2FF2949A02700EF4100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75ABB3012949A02800EF4100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				752680EC295EC14B007A25F2 /* Tools */,
 				75FCEA72295C0BA200DA9F6E /* Operators.swift */,
 				75ABB2F82949A02700EF4100 /* AppDelegate.swift */,
-				75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */,
 				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
 				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
 				75727C772969462B002A8E1F /* BaseTabBarController.swift */,
@@ -432,7 +429,6 @@
 				75493FA4296808AC000C681D /* MusicViewModel2.swift in Sources */,
 				752680E7295E8F42007A25F2 /* RepositioryViewController.swift in Sources */,
 				75E7BBC5295D3B5200212051 /* Provider.swift in Sources */,
-				75ABB2FB2949A02700EF4100 /* SceneDelegate.swift in Sources */,
 				753DC1EF2966736700007E88 /* SongsService.swift in Sources */,
 				752680E9295EB06B007A25F2 /* RepositorySevice.swift in Sources */,
 				758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */,
