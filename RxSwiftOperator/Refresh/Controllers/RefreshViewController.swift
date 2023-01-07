@@ -17,8 +17,6 @@ class RefreshViewController: UIViewController {
   
   private lazy var disbag = DisposeBag()
   
-  @IBOutlet weak var jumpBtn: UIBarButtonItem!
-  
   private lazy var tableView:UITableView = {
     let tableView = UITableView(frame: .zero, style: .plain)
 //    tableView.mj_header = MJRefreshNormalHeader()

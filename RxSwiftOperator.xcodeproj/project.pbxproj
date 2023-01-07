@@ -17,9 +17,13 @@
 		753DC1EF2966736700007E88 /* SongsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1EE2966736700007E88 /* SongsService.swift */; };
 		753DC1F12966753300007E88 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1F02966753300007E88 /* MusicViewModel.swift */; };
 		753DC1F429669ED300007E88 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DC1F329669ED300007E88 /* MusicModel.swift */; };
+		754039FC29691E88001EDAA0 /* RxImagePickerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754039FB29691E88001EDAA0 /* RxImagePickerDelegateProxy.swift */; };
+		754039FE29693796001EDAA0 /* UIImagePickerController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754039FD29693796001EDAA0 /* UIImagePickerController+Extension.swift */; };
+		75403A0029693EB1001EDAA0 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754039FF29693EB1001EDAA0 /* ImageViewController.swift */; };
 		7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547DB5E2965769800B7578A /* ActivityIndicator.swift */; };
 		7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548E9A9296526E100335A28 /* UILabel+Extension.swift */; };
 		75493FA4296808AC000C681D /* MusicViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75493FA3296808AC000C681D /* MusicViewModel2.swift */; };
+		75727C782969462B002A8E1F /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75727C772969462B002A8E1F /* BaseTabBarController.swift */; };
 		758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FB2964183D00D5CB12 /* InputView.swift */; };
 		758FD6FE2964203C00D5CB12 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */; };
 		758FD7002964273A00D5CB12 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FD6FF2964273A00D5CB12 /* String+Extension.swift */; };
@@ -48,9 +52,13 @@
 		753DC1EE2966736700007E88 /* SongsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsService.swift; sourceTree = "<group>"; };
 		753DC1F02966753300007E88 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		753DC1F329669ED300007E88 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		754039FB29691E88001EDAA0 /* RxImagePickerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxImagePickerDelegateProxy.swift; sourceTree = "<group>"; };
+		754039FD29693796001EDAA0 /* UIImagePickerController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Extension.swift"; sourceTree = "<group>"; };
+		754039FF29693EB1001EDAA0 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7547DB5E2965769800B7578A /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7548E9A9296526E100335A28 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		75493FA3296808AC000C681D /* MusicViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel2.swift; sourceTree = "<group>"; };
+		75727C772969462B002A8E1F /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		758FD6FB2964183D00D5CB12 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		758FD6FD2964203C00D5CB12 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		758FD6FF2964273A00D5CB12 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +109,7 @@
 				758FD6FF2964273A00D5CB12 /* String+Extension.swift */,
 				7548E9A9296526E100335A28 /* UILabel+Extension.swift */,
 				753DC1E629666F3300007E88 /* MJRefreshComponent+Extension.swift */,
+				754039FD29693796001EDAA0 /* UIImagePickerController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -157,6 +166,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		754039F829691DF0001EDAA0 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				754039FA29691E40001EDAA0 /* Proxy */,
+				754039F929691E37001EDAA0 /* Controllers */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		754039F929691E37001EDAA0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				754039FF29693EB1001EDAA0 /* ImageViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		754039FA29691E40001EDAA0 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				754039FB29691E88001EDAA0 /* RxImagePickerDelegateProxy.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
 		75ABB2EC2949A02700EF4100 = {
 			isa = PBXGroup;
 			children = (
@@ -184,8 +218,10 @@
 				75ABB2FA2949A02700EF4100 /* SceneDelegate.swift */,
 				75FCEA70295BEE5500DA9F6E /* DatePickerViewController.swift */,
 				752680EF295ECA7A007A25F2 /* BaseNavigationController.swift */,
+				75727C772969462B002A8E1F /* BaseTabBarController.swift */,
 				75E7BBBF295D3A0A00212051 /* MVVM */,
 				753DC1E92966725700007E88 /* Refresh */,
+				754039F829691DF0001EDAA0 /* ImagePicker */,
 				75ABB2FE2949A02700EF4100 /* Main.storyboard */,
 				75ABB3012949A02800EF4100 /* Assets.xcassets */,
 				75ABB3032949A02800EF4100 /* LaunchScreen.storyboard */,
@@ -375,7 +411,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75727C782969462B002A8E1F /* BaseTabBarController.swift in Sources */,
 				752680F0295ECA7A007A25F2 /* BaseNavigationController.swift in Sources */,
+				754039FC29691E88001EDAA0 /* RxImagePickerDelegateProxy.swift in Sources */,
 				75E7BBC9295D410500212051 /* RepositoryViewModel.swift in Sources */,
 				7547DB5F2965769800B7578A /* ActivityIndicator.swift in Sources */,
 				752680EB295EBDC2007A25F2 /* RegisterViewController.swift in Sources */,
@@ -384,6 +422,7 @@
 				75FCEA71295BEE5500DA9F6E /* DatePickerViewController.swift in Sources */,
 				752680EE295EC157007A25F2 /* UIColor+Extension.swift in Sources */,
 				75FCEA73295C0BA200DA9F6E /* Operators.swift in Sources */,
+				75403A0029693EB1001EDAA0 /* ImageViewController.swift in Sources */,
 				753DC1F429669ED300007E88 /* MusicModel.swift in Sources */,
 				75ABB2FD2949A02700EF4100 /* RefreshViewController.swift in Sources */,
 				7548E9AA296526E100335A28 /* UILabel+Extension.swift in Sources */,
@@ -397,6 +436,7 @@
 				753DC1EF2966736700007E88 /* SongsService.swift in Sources */,
 				752680E9295EB06B007A25F2 /* RepositorySevice.swift in Sources */,
 				758FD6FC2964183D00D5CB12 /* InputView.swift in Sources */,
+				754039FE29693796001EDAA0 /* UIImagePickerController+Extension.swift in Sources */,
 				752680F2295ECC80007A25F2 /* RegisterService.swift in Sources */,
 				75E7BBC7295D3F7F00212051 /* Repositories.swift in Sources */,
 			);
@@ -549,11 +589,12 @@
 				DEVELOPMENT_TEAM = 4UKBZQ5P63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxSwiftOperator/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App需要访问您的相机";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App需要访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,11 +619,12 @@
 				DEVELOPMENT_TEAM = 4UKBZQ5P63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxSwiftOperator/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App需要访问您的相机";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App需要访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
