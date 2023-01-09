@@ -105,10 +105,11 @@ extension RefreshViewController {
     
     tableView.rx
       .modelSelected(SongModel.self)
-      .subscribe(onNext: {[weak self] in
-        print("选中的歌曲名称: \($0.name)")
-        let contrl = RepositioryViewController()
-        self?.navigationController?.pushViewController(contrl, animated: true)
+      .subscribe(onNext: {[weak self] model in
+        print("选中的歌曲名称: \(model.name)")
+        let ctrl = RepositioryViewController()
+        ctrl.hidesBottomBarWhenPushed = true
+        self?.navigationController?.pushViewController(ctrl, animated: true)
       })
       .disposed(by: disbag)
   }

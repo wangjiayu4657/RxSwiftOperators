@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ImageViewController: UIViewController {
   
@@ -23,7 +25,7 @@ class ImageViewController: UIViewController {
   
   private lazy var cameraBtn:UIButton = {
     let cameraBtn = UIButton(type: .roundedRect)
-    cameraBtn.setTitle("相机", for: .normal)
+    cameraBtn.setTitle("拍照", for: .normal)
     cameraBtn.backgroundColor = .orange
     return cameraBtn
   }()
@@ -44,18 +46,21 @@ class ImageViewController: UIViewController {
   
   private lazy var imageView:UIImageView = {
     let imageView = UIImageView(frame: .zero)
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleToFill
     return imageView
   }()
 
+  private lazy var disbag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.title = "图片选择器"
     
     buildSubViews()
+    bindData()
   }
 }
+
 
 // MARK: - 设置UI
 extension ImageViewController {
@@ -72,7 +77,49 @@ extension ImageViewController {
     imageView.snp.makeConstraints { make in
       make.top.equalTo(stackView.snp.bottom).offset(10)
       make.left.right.equalTo(stackView)
-      make.height.equalTo(240)
+      make.height.equalTo(180)
     }
+  }
+  
+  private func bindData() {
+    //判断拍照按钮是否可用
+    cameraBtn.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+
+    cameraBtn.rx.tap
+      .flatMapLatest{ [weak self] _ in
+        return UIImagePickerController.rx
+          .createWithParent(self) { picker in
+            picker.sourceType = .camera
+            picker.allowsEditing = false
+          }
+          .flatMap{$0.rx.didFinishedPickerInfomation}
+      }
+      .map{ $0[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage}
+      .bind(to: imageView.rx.image)
+      .disposed(by: disbag)
+    
+    pictureBtn.rx.tap
+      .flatMapLatest{[weak self] _ in
+        return UIImagePickerController.rx.createWithParent(self) { picker in
+          picker.sourceType = .photoLibrary
+          picker.allowsEditing = false
+        }
+        .flatMap{$0.rx.didFinishedPickerInfomation}
+      }
+      .map{$0[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage}
+      .bind(to: imageView.rx.image)
+      .disposed(by: disbag)
+    
+    editBtn.rx.tap
+      .flatMapLatest{[weak self] _ in
+        return UIImagePickerController.rx.createWithParent(self) { picker in
+          picker.sourceType = .photoLibrary
+          picker.allowsEditing = true
+        }
+        .flatMap{$0.rx.didFinishedPickerInfomation}
+      }
+      .map{$0[UIImagePickerController.InfoKey.editedImage.rawValue] as? UIImage}
+      .bind(to: imageView.rx.image)
+      .disposed(by: disbag)
   }
 }

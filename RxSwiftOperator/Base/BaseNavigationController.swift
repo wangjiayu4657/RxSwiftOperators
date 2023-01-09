@@ -30,6 +30,7 @@ class BaseNavigationController: UINavigationController {
   }
 }
 
+
 extension BaseNavigationController {
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return UIStatusBarStyle.lightContent
